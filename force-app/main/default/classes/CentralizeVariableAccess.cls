@@ -1,3 +1,4 @@
+/** 
 public class CentralizeVariableAccess {
     private static Boolean userCacheLoaded = false;
     private static Boolean userIsSpecial = false;
@@ -31,7 +32,7 @@ public class CentralizeVariableAccess {
         userCacheLoaded = true;
     }
 }
-
+*/
 /* 
 * With this approach you can cache all necessary information from an object with only one SOQL call.
 */

@@ -65,3 +65,13 @@ sfdx force:data:tree:export -q "SELECT Name, BillingStreet, BillingCity, Billing
 * sfdx force:data:tree:import --sobjecttreefiles data/Account.json
 * sfdx force:apex:class:create -n AccountSearchController -d force-app/main/default/classes
 * sfdx force:source:push
+* sfdx force:lightning:event:create -n AccountsLoaded -d force-app/main/default/aura
+* sfdx force:org:open
+* sfdx force:source:pull
+
+* Successfully created scratch org: 00D1h00000071fgEAA, username: test-hshabt2j72ev@example.com
+
+* sfdx force:org:display -u AdvancedApex
+* sfdx force:auth:web:login -a MyTP
+* sfdx force:org:list
+
