@@ -1,5 +1,6 @@
 public with sharing class AccountSearchController {
-    public AccountSearchController() {
-
+    @AuraEnabled
+    public static List<Account> searchAccounts( String searchTerm ){
+        
     }
 }
