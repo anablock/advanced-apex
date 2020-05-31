@@ -58,6 +58,7 @@ Don’t deploy your code to production directly from Visual Studio Code. The dep
 Deploy your changes to production using [packaging](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm) or by [converting your source](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_force_source.htm#cli_reference_convert) into metadata format and using the [metadata deploy command](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_force_mdapi.htm#cli_reference_deploy).
 
 # sfdx Commands
+* https://www.youtube.com/watch?time_continue=304&v=MSOH9miurcM&feature=emb_logo
 * sfdx force:project:create -n geolocation
 * sfdx force:org:create -s -f config/project-scratch-def.json -a GeoAppScratch
 * sfdx force:data:record:create -s Account -v "Name='Marriott Marquis' BillingStreet='780 Mission St' BillingCity='San Francisco' BillingState='CA' BillingPostalCode='94103' Phone='(415) 896-1600' Website='www.marriott.com'"
@@ -74,4 +75,55 @@ sfdx force:data:tree:export -q "SELECT Name, BillingStreet, BillingCity, Billing
 * sfdx force:org:display -u AdvancedApex
 * sfdx force:auth:web:login -a MyTP
 * sfdx force:org:list
+* history
+* 
+
+## Convert Source to Metadata Format and Deploy
+Create a folder to put the converted files called mdapioutput.
+* mkdir mdapioutput
+run the convert command:
+* sfdx force:source:convert -d mdapioutput/
+Deploy it to your testing environment:
+* sfdx force:mdapi:deploy -d mdapioutput/ -u MyTP -w 100
+Assign a permission set:
+* sfdx force:user:permset:assign -n DreamInvest -u MyTP
+Run your tests and interact with the app:
+* sfdx force:org:open -u MyTP
+
+# +++ PLATFORM DEVELOPER I +++
+* A roll-up summary field is a field on a mater record that summarizes date or numerical data from detail records.
+* The Salesforce platform tracks dependencies between sObjects used in Apex and declarative object definitions.
+* Apex initializes all variables, regardless of type, to the special value null.
+* Constants are declared using the static + final modifiers.
+* Apex primitive data types:
+  * Blob
+  * Boolean
+  * Datetime
+  * Decimal
+  * Double
+  * ID
+  * Integer
+  * Long
+  * String
+  * Time
+    * Variables to be declared from these data types are all objects.
+  ```java
+  // Sample String method
+  Boolean validString userString.isAlphanumeric();
+
+  // Sample Datetime method
+  Date curUserDate = curUserDate.date();
+
+  // Sample constant
+  static final DOUBLE PI = 3.142857;
+
+  // A For Loop (list or set iteration)
+  for (Integer i :threeNumbers) {
+    System.debug('List Loop Iteration: ' + i);
+  }
+  ```
+
+  * List - ordered, indexed collection of elements
+  * Set - unordered collection of elements that does not contain duplicates
+  * Map - collection of key value pairs where each unique key maps to a single value
 
