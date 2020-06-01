@@ -89,6 +89,7 @@ Assign a permission set:
 * sfdx force:user:permset:assign -n DreamInvest -u MyTP
 Run your tests and interact with the app:
 * sfdx force:org:open -u MyTP
+* touch
 
 # +++ PLATFORM DEVELOPER I +++
 * A roll-up summary field is a field on a mater record that summarizes date or numerical data from detail records.
