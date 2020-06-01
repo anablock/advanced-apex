@@ -128,3 +128,8 @@ Run your tests and interact with the app:
   * Set - unordered collection of elements that does not contain duplicates
   * Map - collection of key value pairs where each unique key maps to a single value
 
+* `with sharing` - which records can the class see
+* `DataType memberVariable` - a class can contain 0+ member variables
+* `DataType memberProperty { get; set; }` - a class can contain 0+ properties
+* `public MyClass() {//... constructor logic}` - a class can contain 0+ constructors
+* `public void memberMethod() {}` - a class can contain 0+ methods.
