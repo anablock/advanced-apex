@@ -140,3 +140,4 @@ Run your tests and interact with the app:
 | global | Accessible to all code everywhere, used to define code for asynchronous Apex and services (email, web) | Accessible to all code everywhere |
 | public | Accessible within your app or namespace | Accessible within your app or namespace |
 | protected | Not available | Accessible to any: Inner classes in the defining Apex class, Classes that extend the defining Apex class | 
+| private | Applied to inner class to make them accessible locally. Can be applied to test classes. | The default access modifier.  A private member is accessible only within the Apex class in which it is defined. |
