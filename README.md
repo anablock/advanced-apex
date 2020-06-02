@@ -155,3 +155,7 @@ Once the platform receives a request to perform a DML action, the platform execu
 
 * before - triggers used to update record values
 * after - triggers are used to access field values, such as Ids, that are set by the system and to effect changes in other records.
+
+| Trigger Context Variable | What does it contain? | Where is it available? |
+| --- | --- | --- |
+| isInsert, isBefore, etc. | Returns true, if the DML operation (e.g. isInsert) or 
