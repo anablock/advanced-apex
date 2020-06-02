@@ -141,3 +141,17 @@ Run your tests and interact with the app:
 | public | Accessible within your app or namespace | Accessible within your app or namespace |
 | protected | Not available | Accessible to any: Inner classes in the defining Apex class, Classes that extend the defining Apex class | 
 | private | Applied to inner class to make them accessible locally. Can be applied to test classes. | The default access modifier.  A private member is accessible only within the Apex class in which it is defined. |
+
+### Sharing Model
+| When a class is invoked by ... | The Sharing Model is ... |
+| An anonymous block | Respected |
+| A trigger | Ignored |
+| Another class | Respected, if the invoking class is 'with sharing', Ignored otherwise. |
+
+## Triggers
+Apex code that may execute because a DML event (insert, update, delete, or undelete) has occured on an sObject.
+
+Once the platform receives a request to perform a DML action, the platform executes the many steps of the 'Save Order of Execution.'  Two of these steps execute triggers.
+
+* before - triggers used to update record values
+* after - triggers are used to access field values, such as Ids, that are set by the system and to effect changes in other records.
