@@ -158,4 +158,9 @@ Once the platform receives a request to perform a DML action, the platform execu
 
 | Trigger Context Variable | What does it contain? | Where is it available? |
 | --- | --- | --- |
-| isInsert, isBefore, etc. | Returns true, if the DML operation (e.g. isInsert) or times (e.g. isBefore) is accurate for the event. | All triggers |
+| isInsert, isBefore, etc. | Returns true, if the DML operation (e.g. isInsert) or timing (e.g. isBefore) is accurate for the event. | All triggers |
+| new | A list of the new versions of the sObjects. | Insert and update triggers | 
+| newMap | A map of the updated versions of the sObjects | before update, after insert, and after update triggers |
+| old | A list of the previous versions of the sObjects | Update and delete triggers |
+| oldMap | A map of IDs to the previous versions of the sObjects. | Update and delete triggers |
+| isExecuting | Returns true if the current context for the Apex code is a trigger, not a Vfp, a Web Service, or an executeAnonymous() API call | All triggers
