@@ -158,4 +158,4 @@ Once the platform receives a request to perform a DML action, the platform execu
 
 | Trigger Context Variable | What does it contain? | Where is it available? |
 | --- | --- | --- |
-| isInsert, isBefore, etc. | Returns true, if the DML operation (e.g. isInsert) or 
+| isInsert, isBefore, etc. | Returns true, if the DML operation (e.g. isInsert) or times (e.g. isBefore) is accurate for the event. | All triggers |
