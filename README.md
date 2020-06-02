@@ -164,3 +164,6 @@ Once the platform receives a request to perform a DML action, the platform execu
 | old | A list of the previous versions of the sObjects | Update and delete triggers |
 | oldMap | A map of IDs to the previous versions of the sObjects. | Update and delete triggers |
 | isExecuting | Returns true if the current context for the Apex code is a trigger, not a Vfp, a Web Service, or an executeAnonymous() API call | All triggers
+
+A trigger has a run-time context which can be accessed using context variables of the System.Trigger class.  The context contains information about the invoking DML event, the data available to the trigger, and more.
+
