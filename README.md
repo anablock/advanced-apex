@@ -133,3 +133,8 @@ Run your tests and interact with the app:
 * `DataType memberProperty { get; set; }` - a class can contain 0+ properties
 * `public MyClass() {//... constructor logic}` - a class can contain 0+ constructors
 * `public void memberMethod() {}` - a class can contain 0+ methods.
+
+### Accessing an Apex Class or Class Member
+| Access Modifier Keyword | Applied to a Class | Applied to a Class Member |
+| --- | --- | --- |
+| global | Accessible to all code everywhere, used to define code for asynchronous Apex and services (email, web) | Accessible to all code everywhere |
