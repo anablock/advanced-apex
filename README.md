@@ -138,3 +138,5 @@ Run your tests and interact with the app:
 | Access Modifier Keyword | Applied to a Class | Applied to a Class Member |
 | --- | --- | --- |
 | global | Accessible to all code everywhere, used to define code for asynchronous Apex and services (email, web) | Accessible to all code everywhere |
+| public | Accessible within your app or namespace | Accessible within your app or namespace |
+| protected | Not available | Accessible to any: Inner classes in the defining Apex class, Classes that extend the defining Apex class | 
