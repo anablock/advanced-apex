@@ -195,3 +195,12 @@ public PageReference doSearch() {
   return null;
 }
 ```
+There are two reasons you must choose a controller extension over a custom controller:
+* You want to use a custom functionality already existing in the standard or custom controller you are using for the page.
+* You need to use your page with declarative Salesforce features that depend on a standard controller, like creating a custom button or including your page within a page layout.
+
+## Lightning Components
+* A component can have hooks into Apex methods annotated with `@AuraEnabled`
+
+## Apex Testing
+
