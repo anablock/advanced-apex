@@ -167,3 +167,31 @@ Once the platform receives a request to perform a DML action, the platform execu
 
 A trigger has a run-time context which can be accessed using context variables of the System.Trigger class.  The context contains information about the invoking DML event, the data available to the trigger, and more.
 
+## Save Order of Execution
+The Save Order of Execution describes the series of events that occur on the Salesforce platform when a record is saved.
+
+### What Can Controller Extensions and Custom Controllers Provide?
+* `Getter` methods that allow the view to retrieve data using the controller:
+```apex
+public String getSearchText() {
+  return searchText;
+}
+```
+* `Setter` methods that allow the view to set data in the controller.
+```Apex
+public void setSearchText(String s) {
+  searchText = s;
+}
+```
+* `Properties` that can be used to get and set or store values.
+```Apex
+public List<Lead> Results { get: }
+```
+* `Action` methods to perform logic or navigation.
+```Apex
+public PageReference doSearch() {
+  results = (List<Lead>)[ FIND :searchText
+                          RETURNING Lead(Name, Email)][0];
+  return null;
+}
+```
