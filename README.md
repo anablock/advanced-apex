@@ -203,4 +203,62 @@ There are two reasons you must choose a controller extension over a custom contr
 * A component can have hooks into Apex methods annotated with `@AuraEnabled`
 
 ## Apex Testing
+Load test data declaratively using a static resource:
+```Apex
+List<Holiday> holidays = Test.loadData(Holiday.sObjectType, 'Test Holidays');
+```
+### Creating Test Data in a Test Factory Class vs Method
+* Test data factories can be made accessible to all test methods within an app or just to test methods in a particular test class.
+* When localized, a test data factory method annotated with `@testSetup` executes before any other method in the test class and provides data to all the test methods in the test class.
+The class and method annotation `@isTest(seeAllData = true)` allows you to create test classes and test methods that have access to all data in the org.
+### Create and Apex Test Method inside an Apex Test Class
+```apex
+@isTest
+// a test class should be private
+private class MyBusinessLoginClass_Test {
+  @testSetup
+  private static void myTestDataFactory() {
+    // ... Create local test data
+  }
+  // a test method should be static
+  // testMethod tells the testing framework that this method is a test.
+  private static testMethod void myBusinessLogicTest() {
+    // ... test saved Apex code
+  }
+}
+```
+* `System.runAs(User u)` enables you to write test methods that allow you to specify the user context so that the user's record sharing is enforced.
+```apex
+@isTest
+private class MyClass_Test {
+  @testSetup
+  private static void testDataSetup() {
+    Profile p = // Write a query to select a profile
+    User u = new User(Lastname = 'Foo', ProfileId = p.Id);
+    insert u;
+  }
+
+  private static testMethod void myClassTestUser() {
+    User testUser = // Find Foo, who has set up above
+    System.runAs(testUser) {
+      // Now, the rest of test runs as testUser
+      // Otherwise the test would run as System.
+    }
+  }
+}
+```
+
+## Questions
+1. What is a correct pattern to follow when programming in Apex on a multitenant platform?
+* USE QUERIES TO SELECT THE FEWEST FIELDS AND RECORDS POSSIBLE TO AVOID EXCEEDING GOVERNOR LIMITS. 
+2. Which two types of code represent the controller in model-view-controller (MVC) architecture on the Lightning
+Platform? (Select two answers.)
+* STANDARDCONTROLLER SYSTEM METHODS THAT ARE REFERENCED BY VISUALFORCE
+* CUSTOM APEX AND JAVASCRIPT CODE THAT IS USED TO MANIPULATE DATA
+3. A developer is creating an application to track engines and their parts. An individual part can be used in
+different types of engines. Which data model should the developer use to track the data and to prevent orphan
+records?
+* CREATE A JUNCTION OBJECT TO RELATE MANY ENGINES TO MANY PARTS THROUGH MASTER-DETAIL RELATIONSHIPS. - A junction object should be created because
+an engine has many parts and a component can be part of many engines. A master-detail relationship will prevent orphan records.
+
 
