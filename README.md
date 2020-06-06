@@ -260,5 +260,20 @@ different types of engines. Which data model should the developer use to track t
 records?
 * CREATE A JUNCTION OBJECT TO RELATE MANY ENGINES TO MANY PARTS THROUGH MASTER-DETAIL RELATIONSHIPS. - A junction object should be created because
 an engine has many parts and a component can be part of many engines. A master-detail relationship will prevent orphan records.
-
-
+4. On which object can an administrator create a roll-up summary field?
+ANY OBJECT THAT IS ON THE MASTER SIDE OF A MASTER-DETAIL RELATIONSHIP. -  A roll-up summary field is created by showing a value from the master record that comes from field values within the detail record. The detail record should have a master-detail relationship with the master in order to calculate the values from related records. 
+5. A developer wants to create a custom object to track customer invoices. How should you relate invoices and accounts to ensure that all invoices are visible to everyone with access to an account?
+*  THE INVOICE SHOULD HAVE A MASTER-DETAIL RELATIONSHIP TO THE ACCOUNT. -  There must be a master-detail relationship to make sure that all child(invoice) records are visible to anyone with access to the account, which is the master.
+6. A custom field on the Account object was required for prototyping but is no longer needed. Using Schema Builder, what is the correct process for a developer to delete the custom field?
+* REMOVE ALL REFERENCES FROM THE CODE AND THEN DELETE THE CUSTOM FIELD FROM SCHEMA BUILDER. - Only after deleting the references from the code can you delete the field from Schema Builder.
+7. When loading data into an organization, which two actions should a developer take to match the updates to existing records? 
+* MATCH THE ID FIELD TO A COLUMN IN THE IMPORTED FILE. - Using the Salesforce ID makes it easier to update the records so that they are aligned. 
+* MATCH AN EXTERNAL ID TEXT FIELD TO A COLUMN IN THE IMPORTED FILE. - A custom field with an External ID attribute, makes it easier to update the records so that they are aligned. 
+8. Which three statements are true regarding cross-object formula fields?
+* FORMULA FIELDS CAN REFERENCE FIELDS FROM MASTER-DETAIL OR LOOKUP PARENT RELATIONSHIPS. -  A cross-object formula can reference merge fields from a master (“parent”) object if an object is on the detail side of a master-detail relationship. A cross-object formula also works with lookup relationships.
+* FORMULA FIELDS CAN REFERENCE FIELDS FROM OBJECTS THAT ARE UP TO 10 RELATIONSHIPS AWAY. -  A cross-object formula is available anywhere formulas are used except when creating default values.
+* FORMULA FIELDS CAN EXPOSE DATA THE USER DOES NOT HAVE ACCESS TO IN A RECORD. - Formula fields can expose data that the user does not have access to. For example, if you create a formula field on the Case object that references an account field and display that formula field in the Case page layout, users can see this field even if they don’t have access to the account record.
+9. In an organization that has enabled multiple currencies, a developer needs to aggregate the sum of the `Estimated_Value__c` currency field from the CampaignMember object using a roll-up summary field called `Total_Estimated_Value__c` on Campaign. How is the currency of the `Total_Estimated_Value__c` roll-up summary field determined?
+* THE VALUES IN `CAMPAIGNMEMBER.ESTIMATED_VALUE__C` ARE CONVERTED INTO THE CURRENCY OF THE CAMPAIGN RECORD, AND THE SUM IS DISPLAYED USING THE CURRENCY ON THE CAMPAIGN RECORD. -  If your organization uses multiple currencies, the currency of the master record determines the currency of the roll-up summary field. For example, if the master and detail records are in different currencies, the detail record value is converted into the currency of the master record.
+10 . The sales management team hires a new intern. The intern is not allowed to view opportunities, but needs to see the most recent closed date of all child opportunities when viewing an account record. What should a developer do to meet this requirement?
+* 
